@@ -1,0 +1,23 @@
+body{
+    max-width: 1200px;
+    margin: auto;
+}
+h1{
+    text-align: center;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-column-gap: 5px;
+    background: antiquewhite;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.grid_item{
+    background-color: burlywood;
+    border: 1px solid black;
+    padding: 30px;
+    text-align: center;
+}
