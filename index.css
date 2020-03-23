@@ -1,17 +1,26 @@
 body{
-    max-width: 1200px;
+    max-width: 1800px;
     margin: auto;
 }
 h1{
     text-align: center;
 }
-
+label{
+    font-weight: bold;
+}
+ul{
+    padding: 0;
+}
+li{
+    list-style-type: none;
+    padding: 10px;
+}
 .grid_container{
     display: grid;
-    grid-template-columns: 25% 25% 50%;
+    grid-template-columns: auto auto auto;
     grid-column-gap: 5px;
     background: antiquewhite;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
 }
@@ -20,4 +29,11 @@ h1{
     border: 1px solid black;
     padding: 30px;
     text-align: center;
+    border-radius: 10px;
+}
+.grid_item>div{
+    background-color: lightgray;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
 }

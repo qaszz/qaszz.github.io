@@ -8,20 +8,61 @@
     <body>
         <h1>Arbeidsfordeling</h1>
         <div class="grid_container">
+            <!---LEGGER TIL ANSATTE-->
             <div class ="grid_item">
                 <h2>Legg til ansatt</h2>
                 <form onsubmit="addNewWorker(event)">
                     <label>
-                        Navn: <input name = "name" placeholder="Navn på ansatt" />
+                        Navn: <input name = "name" placeholder="Navn på ansatt" /> 
                     </label>
+                    <input type="submit"/>
                 </form>
+                <div id="workerList">
+                    <ul id = "workerListUl">
+                        <li>hei</li>
+                    </ul>
+                </div>
             </div>
+            <!--LEGGER TIL ARBEIDSOPPGAVER-->
             <div class ="grid_item">
                 <h2>Legg til arbeidsoppgave</h2>
+                <form onsubmit="addNewTask(event)">
+                    <label>
+                        Oppgave: <input name = "task" placeholder ="Navn på arbeidsoppgave" />
+                    </label>
+                    <input type="submit" />
+                </form>
+                <div id = "taskList">
+                    <ul id = "taskListUl">
+                        <li>hei</li>
+                    </ul>
+                </div>
             </div>
+            <!--FORDELER ARBEIDSOPPGAVER-->
             <div class ="grid_item">
-                3
+                <h2>Fordel arbeidsoppgaver</h2>
+                <form onsubmit="assignTask(event)">
+                    <label>
+                        Navn: 
+                        <select id = "worker">
+                            <option>hei</option>
+                        </select>
+                    </label>
+                    <label>
+                        Oppgave:
+                        <select id="task">
+                            <option>ok</option>
+                        </select>
+                    </label>
+                    <input type="submit">
+                </form>
+                <div id = "assignTaskList">
+                    <ul id = "assignTaskListUl">
+                        <li>hei</li>
+                    </ul>
+                </div>
             </div>
+
         </div>
     </body>
 </html>
