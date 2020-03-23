@@ -1,6 +1,8 @@
+/* ANSATTRELATRERTE FUNKSJONER */
 function addNewWorker(event){
-    
-    const name = document.querySelector("[name='price']").value;
+    event.preventDefault()
+
+    const name = document.querySelector("[name='name']").value;
 
     const worker = {name};
 
@@ -9,23 +11,26 @@ function addNewWorker(event){
     window.localStorage.setItem("workerList", JSON.stringify(workerList));
     renderWorkerList();
 
-    
+    event.target.reset();
     console.log(worker);
 }
-function renderWorkerlist(){
+function renderWorkerList(){
     const workerList = JSON.parse(window.localStorage.getItem("workerList")) || [];
     const workerListEl = document.getElementById("workerListUl");
     workerListEl.innerHTML = "";
     for (const worker of workerList){
         const workerEl = document.createElement("li");
-        productEl.innerHTML = `<li>${worker}</li>`
+        workerEl.innerHTML = `<li>${worker.name}</li>`
+        workerListEl.appendChild(workerEl)
     }
-    workerListEl.appendChild(workerEl)
 }
 
-window.addEventListener("storage", function(event)){
+window.addEventListener("storage", function(event){
     if (event.key === "workerList"){
         renderWorkerList();
     }
+    
+});
 renderWorkerList();
-}
+
+/* ARBEIDSOPPGAVERELATERTE FUNKSJONER */
