@@ -121,7 +121,6 @@ function addImg(event){
     event.target.reset();
     console.log(image);
     const output = document.getElementById("output");
-    outputEl.innerHTML = "";
 }
 function renderImageList(){
     const imageList = JSON.parse(window.localStorage.getItem("imageList")) || [];
