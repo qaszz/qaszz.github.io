@@ -6,7 +6,7 @@
             <link rel="stylesheet" href ="index.css">
             <script src="index.js"></script>
     </head>
-    <body>
+    <body onload="init()">
         <h1>Arbeidsfordeling</h1>
         <div class="grid_container">
             <!---LEGGER TIL ANSATTE-->
@@ -36,6 +36,21 @@
                 <div id = "taskList">
                     <ul id = "taskListUl">
                         <li>Arbeidsoppgaver</li>
+                    </ul>
+                </div>
+            </div>
+            <!--LEGGER TIL BILDE AV ANSATT-->
+            <div class ="grid_item">
+                <h2>Legg til et bilde av ansatt</h2>
+                <form onsubmit="addImg(event)">
+                    <input id="fileInput" type="file" name="image"/>
+                    <br>
+                    <pre id ="output" ></pre>
+                    <input type="submit">
+                </form>
+                <div id="imgList">
+                    <ul id="imgListUl">
+                        <li>Bilder av ansatte</li>
                     </ul>
                 </div>
             </div>

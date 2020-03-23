@@ -50,7 +50,6 @@ function addNewTask(event){
     renderTaskList()
 
     event.target.reset()
-    console.log(work);
 }
 
 function renderTaskList(){
@@ -74,3 +73,82 @@ function renderTaskList(){
     })
 }
 renderTaskList();
+
+/* TILDELINGEN AV ARBEIDSOPPGAVER TIL ANSATT */
+function assignTask(event){
+    event.preventDefault();
+    const name = document.querySelector("#workerDropDown").value;
+    const task = document.querySelector("#taskDropDown").value;
+    const assignedTask = {name, task};
+
+    const assignedTaskList = JSON.parse(window.localStorage.getItem("assignedTaskList")) || [];
+    assignedTaskList.push(assignedTask);
+    window.localStorage.setItem("assignedTaskList", JSON.stringify(assignedTaskList));
+    renderAssignedTaskList();
+
+    event.target.reset();
+    console.log(assignedTask);
+}
+
+function renderAssignedTaskList(){
+    const assignedTaskList = JSON.parse(window.localStorage.getItem("assignedTaskList")) || [];
+    const assignedTaskListEl = document.getElementById("assignTaskListUl");
+    assignedTaskListEl.innerHTML = "";
+    for (const assignedTask of assignedTaskList){
+        const assignedTaskEl = document.createElement("li");
+        assignedTaskEl.innerHTML = `<li>Ansatt: ${assignedTask.name}, Arbeidsoppgave: ${assignedTask.task}`;
+        assignedTaskListEl.appendChild(assignedTaskEl);
+    }
+    window.addEventListener("storage", function(event){
+        if (event.key === "assignedTaskList"){
+            renderAssignedTaskList();
+        }
+    })
+}
+renderAssignedTaskList();
+
+/* LEGGER TIL BILDE AV ANSATT */
+function addImg(event){
+    event.preventDefault();
+
+    const img = document.querySelector("[name='image']").dataset.image;
+    const image = {img};
+    const imageList = JSON.parse(window.localStorage.getItem("imageList")) || [];
+    imageList.push(image);
+    window.localStorage.setItem("imageList", JSON.stringify(imageList));
+    renderImageList();
+
+    event.target.reset();
+    console.log(image);
+    const output = document.getElementById("output");
+    outputEl.innerHTML = "";
+}
+function renderImageList(){
+    const imageList = JSON.parse(window.localStorage.getItem("imageList")) || [];
+    const imageListEl = document.getElementById("imgListUl");
+    imageListEl.innerHTML = "";
+    for (const image of imageList){
+        const imageEl = document.createElement("li");
+        imageEl.innerHTML = `<li><img src="${image.img}"/></li>`
+        imageListEl.appendChild(imageEl);
+    }
+    window.addEventListener("storage", function(event){
+        if (event.key === "imageList"){
+            renderImageList();
+        }
+    })
+}
+renderImageList();
+function init(){
+    document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+}
+function handleFileSelect(event){
+    const reader = new FileReader()
+    reader.onload = handleFileLoad;
+    reader.readAsDataURL(event.target.files[0])
+}
+function handleFileLoad(event){
+    const output = document.getElementById("output");
+    output.innerHTML = `<img src="${event.target.result}" width="100px" />`
+    document.querySelector("[name='image']").dataset.image = event.target.result;
+}

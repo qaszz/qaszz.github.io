@@ -1,5 +1,5 @@
 body{
-    max-width: 1800px;
+    min-width: 1200px;
     margin: auto;
 }
 h1{
@@ -15,9 +15,12 @@ li{
     list-style-type: none;
     padding: 2px;
 }
+img{
+    max-width: 100px;
+}
 .grid_container{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     grid-column-gap: 5px;
     background: antiquewhite;
     padding: 10px;
